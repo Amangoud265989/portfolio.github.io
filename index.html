@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>my cv</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/a1491b17b0.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="header"> 
+        <div class="container">
+            <nav>
+                <div class="logodiv">
+                <p class="logo"><span>< Aman ></span></p>
+               </div>
+                <ul>
+                    <li><a href="#header">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#Skill">Skill</a></li>
+                    <li><a href="#Education">Education</a></li>
+                    <li><a href="#Contact">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-text">
+                <h1>Hi, i'm <span>Goud Amankumar Simanchal </span></h1>
+                <p>Full Stack Java devloper</p>
+            </div>
+        </div>
+    </div>
+
+<!-- about section -->
+
+<div>
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="about-co-1">
+                    <img src="image/img6.png">
+                </div>
+                <div class="about-co-2">
+                    <h1 class="abouth1" >About me</h1>
+                    <p class="aboutp">Hii My Name is Goud Amankumar Simanchal (Aman)
+                        i'm from odisha i have completed my bca 
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- skill -->
+
+
+<div>
+<div id="Skill" class="skillmaindiv">
+    <h1>Skill</h1>
+    <div class="container"> 
+        <div class="skill">
+            
+            <h2>HTML</h2>
+            <div class="progress-bar">
+                <div class="html"><span>80%</span></div>
+            </div>
+
+
+            <h2>CSS</h2>
+            <div class="progress-bar">
+                <div class="css"><span>66%</span></div>
+            </div>
+
+
+            <h2>Javascript</h2>
+            <div class="progress-bar">
+                <div class="Javascript"><span>56%</span></div>
+            </div>
+
+
+            <h2>Mysql</h2>
+            <div class="progress-bar">
+                <div class="Mysql"><span>50%</span></div>
+            </div>
+
+
+            <h2>Adv java</h2>
+            <div class="progress-bar">
+                <div class="Advjava"><span>60%</span></div>
+            </div>
+
+
+            <h2>Spring boot</h2>
+            <div class="progress-bar">
+                <div class="Spring"><span>30%</span></div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+</div>
+
+<!-- Education -->
+<div>
+    <div id="Education" class="edudiv">
+        <p>Education</p>
+
+        <div class="edupara1">
+          <p>  # i have completed  Full stack java devloper  from Naresh it  ameerpet haydrabad</p>
+        </div>
+
+        <div class="edupara2">
+            <p>•Appearing <br> MCA <br> From Roland Institute of Technology, Odisha. </p>
+        </div>
+
+
+        <div class="edupara3">      
+            <p>•BCA <br>  From science College of Autonomous Hinjilicut, Odisha <br><br><br> (7.1 CGPA) 2018-2021 </p>
+        </div>
+
+        <div class="edupara4">
+            <p> •HSC <br> From Akash Junior College of Science and Commerce, Mumbai <br><br><br> (54.80%) 2017-2018.</p>
+        </div>
+
+        
+        <div class="edupara5">
+            <p> •SSC <br> From R.C. Maruti High School, Mumbai <br><br><br><br> (54%) 2015-2017.
+                 </p>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- contact -->
+
+
+<div id="Contact">
+    <div class="container">
+        <div class="row">
+            <div class="contact-left">
+                <h1 class="sub-title">Contact me</h1>
+                <p> <i class="fa-sharp fa-solid fa-paper-plane"></i>amangoud216@gmail.com</p>
+                <p><i class="fa-sharp fa-solid fa-square-phone"></i>7718019864</p>
+                <div class="social-icons">
+                    <a href=""><i class="fa-brands fa-facebook"></i></a>
+                    <a href=""><i class="fa-brands fa-instagram"></i></a>
+                    <a href=""><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+                <a href="image/resume2.pdf" download class="btn btn2">Download CV</a>
+            </div>
+            <div class="contact-right">
+            <form name="submit-to-google-sheet">
+                <input type="text" name="Name" placeholder="Your Name" required >
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="Message"  rows="6" placeholder="Your Message"></textarea>
+                <button type="submit" class="btn btn2">Submit</button>
+            </form>
+            <span id="Welcome"> </span>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>copyright @ AmAn</p>
+    </div>
+</div>  
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzm0bxbKowbAuD16264IaF0itKHSD8TMFFpvAiVogrgQs2ANSytQ3YRCYvhNMDrKwbe_g/exec'
+    const form = document.forms['submit-to-google-sheet']
+    const Welcome = document.getElementById("Welcome")
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+            Welcome.innerHTML = "Message send Successfull"
+            setTimeout(function(){
+                Welcome.innerHTML =""
+            },5000)
+            form.reset()
+        })
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+</body>
+</html>
