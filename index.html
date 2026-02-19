@@ -1,190 +1,155 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>my cv</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/a1491b17b0.js" crossorigin="anonymous"></script>
-</head>
-<body>
-    <div id="header"> 
-        <div class="container">
-            <nav>
-                <div class="logodiv">
-                <p class="logo"><span> < Aman ></span></p>
-               </div>
-                <ul>
-                    <li><a href="#header">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#Skill">Skill</a></li>
-                    <li><a href="#Education">Education</a></li>
-                    <li><a href="#Contact">Contact</a></li>
-                </ul>
-            </nav>
+import React from "react";
+import { motion } from "framer-motion";
 
-            <div class="header-text">
-                <h1>Hi, i'm <span>Goud Amankumar Simanchal </span></h1>
-                <p>Full Stack Java devloper</p>
-            </div>
+export default function Portfolio() {
+  return (
+    <div className="relative min-h-screen bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-900 text-white overflow-hidden">
+
+      {/* Animated Stars Background */}
+      <div className="absolute inset-0 -z-10">
+        {Array.from({ length: 30 }).map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1.5 h-1.5 bg-white rounded-full"
+            style={{
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`
+            }}
+            animate={{ opacity: [0.2, 1, 0.2], scale: [1, 1.8, 1] }}
+            transition={{ duration: 2 + Math.random() * 3, repeat: Infinity }}
+          />
+        ))}
+      </div>
+
+      {/* Hero */}
+      <section className="bg-transparent">
+        <div className="max-w-6xl mx-auto px-6 py-20 text-center">
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-indigo-400 bg-clip-text text-transparent"
+          >
+            Aman Goud
+          </motion.h1>
+
+          <p className="text-indigo-200 max-w-2xl mx-auto mb-8">
+            UI/UX Designer focused on creating intuitive, user‑centered
+            digital experiences and improving product usability.
+          </p>
+
+          <div className="flex justify-center gap-4">
+            <a href="#projects" className="px-6 py-3 rounded-xl bg-indigo-500 hover:bg-indigo-400 transition font-medium">View Projects</a>
+            <a href="#contact" className="px-6 py-3 rounded-xl border border-indigo-400 hover:bg-indigo-800/40 transition">Contact</a>
+          </div>
         </div>
+      </section>
+
+      {/* About */}
+      <section className="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-10">
+        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+          <h2 className="text-2xl font-semibold mb-4 text-indigo-300">About Me</h2>
+          <p className="text-indigo-100">
+            I have experience in IT recruitment and software development,
+            which helps me design solutions that balance business goals and
+            user needs. I enjoy working on user flows, wireframes, and
+            interaction design.
+          </p>
+        </motion.div>
+
+        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+          <h2 className="text-2xl font-semibold mb-4 text-indigo-300">Quick Info</h2>
+          <ul className="space-y-2 text-indigo-100">
+            <li>📍 Bhubaneswar, Odisha</li>
+            <li>🎓 MCA</li>
+            <li>💼 2+ Years Experience</li>
+            <li>🧩 UI/UX & Interaction Design</li>
+          </ul>
+        </motion.div>
+      </section>
+
+      {/* Skills */}
+      <section className="py-16 bg-indigo-950/40 backdrop-blur">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-2xl font-semibold mb-10 text-center text-indigo-300">Skills</h2>
+          <div className="grid md:grid-cols-4 gap-6">
+            {[
+              "User Flows",
+              "Wireframing",
+              "Information Architecture",
+              "Accessibility",
+              "Typography",
+              "Responsive Design",
+              "HTML & CSS",
+              "Developer Handoff"
+            ].map((skill) => (
+              <motion.div key={skill} whileHover={{ y: -8, scale: 1.03 }} className="p-4 bg-indigo-900/40 rounded-xl text-center border border-indigo-700">
+                {skill}
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Projects */}
+      <section id="projects" className="max-w-6xl mx-auto px-6 py-16">
+        <h2 className="text-2xl font-semibold mb-10 text-center text-cyan-300">Projects</h2>
+
+        <div className="grid md:grid-cols-2 gap-6">
+          {["Recruitment Dashboard UX", "Job Search Mobile App"].map((title, i) => (
+            <motion.div key={i} whileHover={{ y: -8 }} className="bg-indigo-900/40 p-6 rounded-xl shadow-lg border border-indigo-700">
+              <h3 className="font-semibold mb-2 text-indigo-200">{title}</h3>
+              <p className="text-indigo-100 text-sm">Case study coming soon with problem, process, and solution.</p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* Experience */}
+      <section className="py-16 bg-indigo-950/40">
+        <div className="max-w-5xl mx-auto px-6">
+          <h2 className="text-2xl font-semibold mb-10 text-center text-cyan-300">Experience</h2>
+
+          <div className="space-y-6">
+            <motion.div whileHover={{ scale: 1.02 }} className="p-6 border border-indigo-700 rounded-xl bg-indigo-900/40">
+              <h3 className="font-semibold text-indigo-200">Bench Sales Recruiter</h3>
+              <p className="text-sm text-indigo-300">Forman Technology • 2024 – Present</p>
+              <p className="text-indigo-100 text-sm mt-2">Working on job sourcing, candidate screening, and improving shortlisting success.</p>
+            </motion.div>
+
+            <motion.div whileHover={{ scale: 1.02 }} className="p-6 border border-indigo-700 rounded-xl bg-indigo-900/40">
+              <h3 className="font-semibold text-indigo-200">Software Engineer (Trainee)</h3>
+              <p className="text-sm text-indigo-300">Technoshrine Infosolution</p>
+              <p className="text-indigo-100 text-sm mt-2">Built applications and dashboards using Java, Python, and SQL.</p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Education */}
+      <section className="max-w-5xl mx-auto px-6 py-16">
+        <h2 className="text-2xl font-semibold mb-10 text-center text-cyan-300">Education</h2>
+
+        <div className="space-y-6">
+          {["Master of Computer Applications (MCA)", "Bachelor of Computer Applications (BCA)"].map((edu, i) => (
+            <motion.div key={i} whileHover={{ y: -6 }} className="p-6 border border-indigo-700 rounded-xl bg-indigo-900/40">
+              <h3 className="font-semibold text-indigo-200">{edu}</h3>
+              <p className="text-sm text-indigo-300">Details here</p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section id="contact" className="py-16 text-center bg-indigo-950/40">
+        <h2 className="text-2xl font-semibold mb-4 text-cyan-300">Contact</h2>
+        <p className="text-indigo-200 mb-4">Let’s work together.</p>
+        <p className="text-indigo-100">amangoud219@gmail.com • +91 6370550256</p>
+      </section>
+
+      <footer className="text-center text-sm text-indigo-400 py-6">
+        © {new Date().getFullYear()} Aman Goud
+      </footer>
     </div>
-
-<!-- about section -->
-
-<div>
-    <div id="about">
-        <div class="container">
-            <div class="row">
-                <div class="about-co-1">
-                    <img src="image/img6.png">
-                </div>
-                <div class="about-co-2">
-                    <h1 class="abouth1" >About me</h1>
-                    <p class="aboutp">Hii My Name is Aman Goud I'm 23 Year old I Have Completed
-                         Full Stack Java devloper. A self-driven and meticulous recent MCA graduate with good problem-solving skills and ability to perform 
-                         well in a team. Constant learner and ability to adapt to new technologies. Looking forward to working in an 
-                         organization where i can utilize and enhance my skills. 
-                         
-                    </p>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- skill -->
-
-
-<div>
-<div id="Skill" class="skillmaindiv">
-    <h1>Skill</h1>
-    <div class="container"> 
-        <div class="skill">
-            
-            <h2>HTML</h2>
-            <div class="progress-bar">
-                <div class="html"><span>80%</span></div>
-            </div>
-
-
-            <h2>CSS</h2>
-            <div class="progress-bar">
-                <div class="css"><span>66%</span></div>
-            </div>
-
-
-            <h2>Javascript</h2>
-            <div class="progress-bar">
-                <div class="Javascript"><span>56%</span></div>
-            </div>
-
-
-            <h2>Mysql</h2>
-            <div class="progress-bar">
-                <div class="Mysql"><span>50%</span></div>
-            </div>
-
-
-            <h2>Adv java</h2>
-            <div class="progress-bar">
-                <div class="Advjava"><span>60%</span></div>
-            </div>
-
-
-            <h2>Spring boot</h2>
-            <div class="progress-bar">
-                <div class="Spring"><span>30%</span></div>
-            </div>
-
-        </div>
-
-    </div>
-</div>
-</div>
-
-<!-- Education -->
-<div>
-    <div id="Education" class="edudiv">
-        <p>Education</p>
-
-        <div class="edupara1">
-        <p> •  i have completed  Full stack java devloper  from Nareshi Technology ameerpet hyderabad</p>
-        </div>
-
-        <div class="edupara2">
-            <p>•Completed <br> MCA <br> From Roland Institute of Technology, Odisha <br><br><br> (8.56 CGPA) 2022-2023 </p>
-        </div>
-
-
-        <div class="edupara3">      
-            <p>•BCA <br>  From science College of Autonomous Hinjilicut, Odisha <br><br><br> (7.1 CGPA) 2018-2021 </p>
-        </div>
-
-        <div class="edupara4">
-            <p> •HSC <br> From Akash Junior College of Science and Commerce, Mumbai <br><br><br> (54.80%) 2017-2018.</p>
-        </div>
-
-        
-        <div class="edupara5">
-            <p> •SSC <br> From R.C. Maruti High School, Mumbai <br><br><br><br> (54%) 2015-2016.
-                 </p>
-        </div>
-
-    </div>
-</div>
-
-
-<!-- contact -->
-
-
-<div id="Contact">
-    <div class="container">
-        <div class="row">
-            <div class="contact-left">
-                <h1 class="sub-title">Contact me</h1>
-                <p> <i class="fa-sharp fa-solid fa-paper-plane"></i>amangoud219@gmail.com</p>
-                <p><i class="fa-sharp fa-solid fa-square-phone"></i>6370550256</p>
-                <div class="social-icons">
-                    <a href=""><i class="fa-brands fa-facebook"></i></a>
-                    <a href=""><i class="fa-brands fa-instagram"></i></a>
-                    <a href=""><i class="fa-brands fa-linkedin"></i></a>
-                </div>
-                <a href="bresume.pdf" download class="btn btn2">Download CV</a>
-            </div>
-            <div class="contact-right">
-            <form name="submit-to-google-sheet">
-                <input type="text" name="Name" placeholder="Your Name" required >
-                <input type="email" name="email" placeholder="Your Email" required>
-                <textarea name="Message"  rows="6" placeholder="Your Message"></textarea>
-                <button type="submit" class="btn btn2">Submit</button>
-            </form>
-            <span id="Welcome"> </span>
-            </div>
-        </div>
-    </div>
-    <div class="copyright">
-        <p>copyright @ AmAn</p>
-    </div>
-</div>  
-  <script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbzm0bxbKowbAuD16264IaF0itKHSD8TMFFpvAiVogrgQs2ANSytQ3YRCYvhNMDrKwbe_g/exec'
-    const form = document.forms['submit-to-google-sheet']
-    const Welcome = document.getElementById("Welcome")
-  
-    form.addEventListener('submit', e => {
-      e.preventDefault()
-      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-        .then(response => {
-            Welcome.innerHTML = "Message send Successfull"
-            setTimeout(function(){
-                Welcome.innerHTML =""
-            },5000)
-            form.reset()
-        })
-        .catch(error => console.error('Error!', error.message))
-    })
-  </script>
-</body>
-</html>
+  );
+}
